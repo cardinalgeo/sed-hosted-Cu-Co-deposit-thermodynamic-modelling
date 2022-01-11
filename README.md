@@ -1,1 +1,1 @@
-# sed_hosted_Cu_Co_deposit_thermodynamic_modelling
+# sed-hosted-Cu-Co-deposit-thermodynamic-modelling
