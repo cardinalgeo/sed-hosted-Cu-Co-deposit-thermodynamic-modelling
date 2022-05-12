@@ -72,6 +72,8 @@ class ConstrainedEquilibration:
         self.states = []
         state = self.initial_state
 
+        self.equilibrium_status = []
+
         for condition in zip(*flattened_values): 
             for value, constraint in zip(condition, self.constraints): 
                 if constraint.name == "temperature": 
@@ -87,8 +89,10 @@ class ConstrainedEquilibration:
 
             state = rkt.ChemicalState(state)   
             
-            self.solver.solve(state, self.conditions)
+            result = self.solver.solve(state, self.conditions)
 
             self.states.append(state)
+            self.equilibrium_status.append("Successful computation!" if result.optima.succeeded else "Computation has failed!")
+
         
-        return self.states
+        return self.states, self.equilibrium_status
