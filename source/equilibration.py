@@ -70,11 +70,11 @@ class ConstrainedEquilibration:
             flattened_values.append(dim.flatten())
 
         self.states = []
-        state = self.initial_state
-
         self.equilibrium_status = []
 
         for condition in zip(*flattened_values): 
+            state = rkt.ChemicalState(self.initial_state)
+
             for value, constraint in zip(condition, self.constraints): 
                 if constraint.name == "temperature": 
                     self.conditions.temperature(value, constraint.units)
